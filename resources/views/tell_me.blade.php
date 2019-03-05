@@ -9,17 +9,7 @@
     <script src="main.js"></script>
 </head>
 <body>
-    <h1>About Us</h1>
-
-   {{ $user['age'] }}
-
-    <ul>
-
-        @foreach ($user as $key =>$value) 
-        <li> {{ $key .' - '.$value }}</li>
-        @endforeach
-    </ul>
-
-
+    Kiki
+    <?php echo $username ?>
 </body>
 </html>

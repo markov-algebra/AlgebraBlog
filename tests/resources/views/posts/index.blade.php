@@ -9,17 +9,12 @@
     <script src="main.js"></script>
 </head>
 <body>
-    <h1>About Us</h1>
+        @foreach ($posts as $key => $post)
+            <a href="posts/{{ $post->id }}">
+                <li>{{ $post->title }}</li>
+            </a>
 
-   {{ $user['age'] }}
-
-    <ul>
-
-        @foreach ($user as $key =>$value) 
-        <li> {{ $key .' - '.$value }}</li>
+            <section>{{ $post->body }}</section>
         @endforeach
-    </ul>
-
-
 </body>
 </html>
