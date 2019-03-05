@@ -40,7 +40,7 @@
                             <label for="confirm_password">Confirm password</label>
                             <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="{{ $user->confirm_password }}">
                         </div>
-                            <button type="submit" class="btn btn-primary">Dodaj</button>
+                            <button type="submit" class="btn btn-primary">Izmjeni</button>
                             <a href="{{ route('users.index')}}" class="btn btn-danger" role="button">Odustani</a>
                     </form>
                 </div>

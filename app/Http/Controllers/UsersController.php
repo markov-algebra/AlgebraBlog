@@ -69,18 +69,10 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-      $user_1 = $this->show($id);
-
-      //dd($user_1);
-
-
-      $user->name = $user_1['name'];
-      $user->email = $user_1['email'];
-      $user->password = $user_1['password'];
-     // $user->remember_token = 'j,hsbdljhcbdsyclysdhbclysdcbjxnč';
-      $user->save();
-
-      return redirect()->route('users.index')->withFlashMessage('Uspješno ste editirali postojećeg korisnika.');
+        $user = User::find($id);
+       
+        return view('users.edit', compact('user'));
+      
     }
        
       //  $user->save();
