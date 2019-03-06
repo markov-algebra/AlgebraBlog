@@ -87,10 +87,19 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    
+    public function update($id){
+        
+        $user = User::find($id);
+        $user->name = request('name');
+        $user->email = request('email');
+        if(!empty(request('password'))){
+            $user->password = request('password');
+        }
+        $user->save();
+        return redirect()->route('users.index')->withFlashMessage('Korisnik' . $user->name . ' je uspješno promijenjen.');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -98,8 +107,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+        $user = User::find($id);
+
+        $user->delete();
+
+        return redirect()->route('users.index')->withFlashMessage('Korisnik je uspješno izbrisan.');
     }
 }

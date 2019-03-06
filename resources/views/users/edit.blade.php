@@ -22,23 +22,24 @@
                 </div>
 
                 <div class="panel-body">
-                    <form action="{{ route('users.store') }}" method="POST">
+                    <form action="{{ route('users.update', $user->id) }}" method="POST">
+                        {{ method_field('PATCH') }}
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="naziv">Username</label>
-                            <input type="text" class="form-control" id="username" name="username"  placeholder="{{ $user->id }}">
+                            <input type="text" class="form-control" id="name" name="name"  value="{{ $user->name }}">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="{{ $user->email }}">
+                            <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="{{ $user->password }}">
+                            <input type="password" class="form-control" id="password" name="password" value="{{ $user->password }}">
                         </div>
                         <div class="form-group">
                             <label for="confirm_password">Confirm password</label>
-                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="{{ $user->confirm_password }}">
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" value="{{ $user->confirm_password }}">
                         </div>
                             <button type="submit" class="btn btn-primary">Izmjeni</button>
                             <a href="{{ route('users.index')}}" class="btn btn-danger" role="button">Odustani</a>
