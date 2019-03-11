@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <script src="main.js"></script>
-</head>
-<body>
+@extends('layouts.master')
 
+@section('content')
+<div class="col-sm-8 blog-main">
+    <div class="blog-post">
+        <a href="{{ route('posts.show', $post->id) }}">
+            <h2 class="blog-post-title">{{ $post->title }}</h2>
+        </a>
+        <p class="blog-post-meta"> {{ $post->created_at->toFormattedDateString() }} by <a href="#">{{ $post->user->name }}</a></p>
 
+        <section>{{ $post->body }}</section>
+    </div>
 
+    
+    <div class="form-group">
+    <form method="POST"
+    
+    action="{{ route('posts.destroy', $post->id) }}" >
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary" role="button">Uredi</a>
+                                   <button class="btn btn-danger ">Izbriši</button>
 
-<li> {{$post->title }} </li>
-<br>
-<section> {{$post->body }} </section>
+                                   
+                                    <a href="{{ route('posts') }}" class="btn btn-primary" role="button">Back</a>
+                                </form>
+</div>
 
-
-
-</body>
-</html>
+</div>
+@endsection
